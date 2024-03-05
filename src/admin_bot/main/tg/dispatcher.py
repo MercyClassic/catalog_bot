@@ -17,19 +17,7 @@ storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
 
-async def on_admin_bot_startup() -> None:
-    bot = Bot(os.environ['bot_token'])
-    await bot.set_webhook(
-        drop_pending_updates=True,
-        url=f'{os.environ["NGINX_URI"]}/admin_bot/webhook',
-        secret_token=os.environ['WEBHOOK_SECRET'],
-    )
-    await bot.session.close()
-
-
 async def startup_dispatcher() -> None:
-    await on_admin_bot_startup()
-
     container = get_container()
     dp.update.outer_middleware(DependencyMiddleware(container))
     dp.callback_query.middleware(CallbackAnswerMiddleware(pre=True))
