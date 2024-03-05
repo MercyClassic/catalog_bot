@@ -1,0 +1,1 @@
+from .send_periodic_newsletter import process_send_periodic_newsletter

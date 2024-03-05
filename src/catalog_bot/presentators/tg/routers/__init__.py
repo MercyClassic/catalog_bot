@@ -1,0 +1,9 @@
+from .admin import router as admin_router
+from .cancel_state import router as cancel_state_router
+from .catalog import router as catalog_router
+from .error import router as error_router
+from .join_channel import router as join_channel_router
+from .main import router as main_admin_router
+from .menu import router as menu_router
+from .newsletter import router as newsletter_router
+from .statistic import router as statistic_router
